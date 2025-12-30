@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>حساب مقادير الحلويات</title>
+<style>
+body{
+    font-family: Arial;
+    direction: rtl;
+    background:#f5f5f5;
+    text-align:center;
+}
+h1{margin:20px}
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:10px;
+    padding:20px;
+}
+button{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#8e44ad;
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+}
+button:hover{background:#732d91}
+#result{
+    display:none;
+    background:#fff;
+    margin:20px;
+    padding:15px;
+    border-radius:10px;
+    text-align:right;
+}
+</style>
+</head>
+
+<body>
+
+<h1>حاسبة مقادير الحلويات</h1>
+
+<div class="buttons">
+<button onclick="calc('vanilla')">بسكويت فانيليا</button>
+<button onclick="calc('choco')">بسكويت شوكولاته</button>
+<button onclick="calc('nescafe')">بسكويت نسكافيه</button>
+<button onclick="calc('pf_v')">بيتي فور فانيليا</button>
+<button onclick="calc('pf_c')">بيتي فور شوكولاته</button>
+
+<button onclick="calc('sablie')">سابليه</button>
+<button onclick="calc('sablie')">سابليه بونبون</button>
+<button onclick="calc('sablie')">روشيه</button>
+<button onclick="calc('sablie')">رفايللو</button>
+<button onclick="calc('sablie')">ميلكا</button>
+
+<button onclick="calc('tart')">تارت</button>
+<button onclick="calc('coffee')">بسكوت قهوه</button>
+<button onclick="calc('kahk')">كحك</button>
+<button onclick="calc('ghorayba')">غريبه</button>
+<button onclick="calc('qarqeesh')">قراقيش</button>
+<button onclick="calc('cinnamon')">بسكوت قرفه</button>
+<button onclick="calc('gozeya')">جوزيه</button>
+<button onclick="calc('donuts')">دونات</button>
+<button onclick="calc('bimbo')">بيمبو</button>
+<button onclick="calc('cookie_v')">كوكيز فانيليا</button>
+<button onclick="calc('cookie_c')">كوكيز شوكولاته</button>
+<button onclick="calc('cookie_fill')">كوكيز حشوات</button>
+<button onclick="calc('cookie_abd')">كوكيز العبد</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+function calc(type){
+let w = prompt("اكتب الوزن المطلوب:");
+if(!w || w<=0) return;
+w = Number(w);
+let h = `<h3>المقادير لوزن ${w}</h3>`;
+
+// بسكويت 1800
+if(["vanilla","choco","nescafe"].includes(type)){
+let f=w/1800;
+h+=`دقيق ${(1000*f).toFixed(1)} جم<br>
+زبدة ${(600*f).toFixed(1)} جم<br>
+سكر بودر ${(380*f).toFixed(1)} جم<br>
+نشا ${(3*f).toFixed(2)} م ك<br>
+بيض ${(4*f).toFixed(2)}<br>
+لبن ${(100*f).toFixed(1)} جم<br>
+بيكنج بودر ${(1*f).toFixed(2)} م ك<br>
+لبن بودرة ${(1*f).toFixed(2)} م ك<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+if(type=="choco") h+=`كاكاو ${(35*f).toFixed(1)} جم<br>`;
+if(type=="nescafe") h+=`نسكافيه ${(30*f).toFixed(1)} جم<br>`;
+}
+
+// بيتي فور
+if(type=="pf_v"||type=="pf_c"){
+let f=w/1500;
+h+=`دقيق ${(625*f).toFixed(1)} جم<br>
+سكر ${(175*f).toFixed(1)} جم<br>
+زبدة ${(500*f).toFixed(1)} جم<br>
+بيض ${(2*f).toFixed(2)}<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+if(type=="pf_c") h+=`كاكاو ${(20*f).toFixed(1)} جم<br>`;
+}
+
+// سابليه وأنواعه 2000
+if(type=="sablie"){
+let f=w/2000;
+h+=`دقيق ${(800*f).toFixed(1)} جم<br>
+زبدة ${(500*f).toFixed(1)} جم<br>
+سكر ${(250*f).toFixed(1)} جم<br>
+بيض ${(2*f).toFixed(2)}<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// تارت 3000
+if(type=="tart"){
+let f=w/3000;
+h+=`دقيق ${(800*f).toFixed(1)} جم<br>
+زبدة ${(500*f).toFixed(1)} جم<br>
+سكر ${(250*f).toFixed(1)} جم<br>
+بيض ${(2*f).toFixed(2)}<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// قهوه 1000
+if(type=="coffee"){
+let f=w/1000;
+h+=`دقيق ${(310*f).toFixed(1)} جم<br>
+زبدة ${(200*f).toFixed(1)} جم<br>
+سكر بودر ${(180*f).toFixed(1)} جم<br>
+نسكافيه ${(11*f).toFixed(1)} جم<br>
+كاكاو ${(30*f).toFixed(1)} جم<br>
+نشا ${(60*f).toFixed(1)} جم<br>
+صفار بيض ${(2*f).toFixed(2)}<br>
+مياه ${(30*f).toFixed(1)} جم<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// كحك
+if(type=="kahk"){
+let f=w/1500;
+h+=`دقيق ${(1000*f).toFixed(1)} جم<br>
+سمنة ${(500*f).toFixed(1)} جم<br>
+نشا ${(15*f).toFixed(1)} جم<br>
+مياه ${(187*f).toFixed(1)} جم<br>
+سمسم ${(2*f).toFixed(2)} م ك<br>
+سكر بودر ${(3*f).toFixed(2)} م ك<br>
+خميرة ${(5*f).toFixed(1)} جم<br>
+ملح ${(1*f).toFixed(1)} جم<br>`;
+}
+
+// غريبه
+if(type=="ghorayba"){
+let f=w/1600;
+h+=`دقيق ${(900*f).toFixed(1)} جم<br>
+سمنة ${(500*f).toFixed(1)} جم<br>
+سكر بودر ${(230*f).toFixed(1)} جم<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// قراقيش
+if(type=="qarqeesh"){
+let f=w/1500;
+h+=`دقيق ${(1000*f).toFixed(1)} جم<br>
+سمنة ${(400*f).toFixed(1)} جم<br>
+زيت ${(50*f).toFixed(1)} جم<br>
+مياه ${(200*f).toFixed(1)} جم<br>
+خميرة ${(5*f).toFixed(1)} جم<br>
+بيكنج بودر ${(3*f).toFixed(1)} جم<br>
+ملح ${(1*f).toFixed(1)} جم<br>
+سمسم ${(3*f).toFixed(2)} م ك<br>
+سكر بودر ${(3*f).toFixed(2)} م ك<br>`;
+}
+
+// قرفة
+if(type=="cinnamon"){
+let f=w/800;
+h+=`دقيق ${(400*f).toFixed(1)} جم<br>
+زبدة ${(250*f).toFixed(1)} جم<br>
+سكر ${(150*f).toFixed(1)} جم<br>
+بيض ${(1*f).toFixed(2)}<br>
+لبن بودرة ${(10*f).toFixed(1)} جم<br>
+بيكنج بودر ${(5*f).toFixed(1)} جم<br>
+قرفة ${(16*f).toFixed(1)} جم<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// جوزيه
+if(type=="gozeya"){
+let f=w/1500;
+h+=`دقيق ${(500*f).toFixed(1)} جم<br>
+زبدة ${(250*f).toFixed(1)} جم<br>
+سكر ${(150*f).toFixed(1)} جم<br>
+بيض ${(2*f).toFixed(2)}<br>
+نشا ${(70*f).toFixed(1)} جم<br>
+بيكنج بودر ${(2*f).toFixed(1)} جم<br>`;
+}
+
+// دونات (3 علب)
+if(type=="donuts"){
+let f=w/3;
+h+=`دقيق ${(2*f).toFixed(2)} كوب<br>
+بيض ${(2*f).toFixed(2)}<br>
+سكر ${(1*f).toFixed(2)} كوب<br>
+لبن ${(1*f).toFixed(2)} كوب<br>
+زيت ${(0.75*f).toFixed(2)} كوب<br>
+بيكنج بودر ${(1*f).toFixed(2)} م ك<br>
+نشا ${(1*f).toFixed(2)} م ك<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// بيمبو
+if(type=="bimbo"){
+let f=w/2000;
+h+=`دقيق ${(800*f).toFixed(1)} جم<br>
+زبدة ${(500*f).toFixed(1)} جم<br>
+سكر بودر ${(250*f).toFixed(1)} جم<br>
+زيت ${(0.25*f).toFixed(2)} كوب<br>
+بيض ${(1*f).toFixed(2)}<br>
+قرفة ${(1*f).toFixed(1)} جم<br>
+بيكنج بودر ${(0.5*f).toFixed(2)} م ص<br>
+كريم كراميل ${(1*f).toFixed(2)} علبة<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// كوكيز
+if(type=="cookie_v"||type=="cookie_c"){
+let f=w/800;
+h+=`دقيق ${(375*f).toFixed(1)} جم<br>
+زبدة ${(250*f).toFixed(1)} جم<br>
+سكر ${(125*f).toFixed(1)} جم<br>
+بيض ${(1*f).toFixed(2)}<br>
+شوكولاتة شيبس ${(100*f).toFixed(1)} جم<br>
+بيكنج بودر ${(0.5*f).toFixed(2)} م ص<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+if(type=="cookie_c") h+=`كاكاو ${(25*f).toFixed(1)} جم<br>`;
+}
+
+// كوكيز حشوات
+if(type=="cookie_fill"){
+let f=w/1250;
+h+=`دقيق ${(375*f).toFixed(1)} جم<br>
+زبدة ${(250*f).toFixed(1)} جم<br>
+سكر ${(125*f).toFixed(1)} جم<br>
+بيض ${(1*f).toFixed(2)}<br>
+شيبس ${(100*f).toFixed(1)} جم<br>
+قالب شوكولاتة ${(1*f).toFixed(2)}<br>
+بيكنج بودر ${(0.5*f).toFixed(2)} م ص<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+// كوكيز العبد
+if(type=="cookie_abd"){
+let f=w/1800;
+h+=`دقيق ${(700*f).toFixed(1)} جم<br>
+زبدة ${(350*f).toFixed(1)} جم<br>
+سكر بودر ${(300*f).toFixed(1)} جم<br>
+زيت ${(150*f).toFixed(1)} جم<br>
+بيض ${(2*f).toFixed(2)}<br>
+كاكاو ${(60*f).toFixed(1)} جم<br>
+لبن بودرة ${(2*f).toFixed(2)} م ك<br>
+بيكنج بودر ${(0.5*f).toFixed(2)} م ص<br>
+قالب شوكولاتة ${(1*f).toFixed(2)}<br>
+فانيليا ${(1*f).toFixed(2)} كيس<br>`;
+}
+
+document.getElementById("result").innerHTML=h;
+document.getElementById("result").style.display="block";
+}
+</script>
+
+</body>
+</html>
